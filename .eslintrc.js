@@ -1,29 +1,28 @@
 module.exports = {
-    env: {
-        browser: true,
-        commonjs: true,
-        es2021: true,
-        node: true,
-        jquery: true,
+  env: {
+    es6: true,
+    node: true,
+  },
+  parserOptions: {
+    "ecmaVersion": 2018,
+  },
+  extends: [
+    "eslint:recommended",
+    "google",
+  ],
+  rules: {
+    "no-restricted-globals": ["error", "name", "length"],
+    "prefer-arrow-callback": "error",
+    "quotes": ["error", "double", {"allowTemplateLiterals": true}],
+  },
+  overrides: [
+    {
+      files: ["**/*.spec.*"],
+      env: {
+        mocha: true,
+      },
+      rules: {},
     },
-    extends: ["prettier", "airbnb-base", "plugin:unicorn/recommended"],
-    parserOptions: {
-        ecmaVersion: "latest",
-    },
-    plugins: ["unicorn", "prettier"],
-    rules: {
-        "unicorn/prefer-top-level-await": "off",
-        "unicorn/prefer-module": "off",
-        "unicorn/filename-case": "off",
-        "unicorn/explicit-length-check": "off",
-        "unicorn/prevent-abbreviations": "off",
-        "consistent-return": "off",
-        "unicorn/better-regex": "off",
-        "unicorn/prefer-node-protocol": "off",
-        "unicorn/numeric-separators-style": "off",
-        "no-param-reassign": "off",
-        "max-len": "off",
-        quotes: [2, "double"],
-        indent: ["error", 4],
-    },
+  ],
+  globals: {},
 };
